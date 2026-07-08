@@ -1,0 +1,7 @@
+let compact = width < 480;
+let state = if has_errors => {
+    if compact => { "compact:error" } else => { "wide:error" }
+} else => {
+    if compact => { "compact:normal" } else => { "wide:normal" }
+};
+state;
