@@ -1,7 +1,6 @@
+fn ui_spec(mode, state) -> string;
+
 let compact = width < 480;
-let state = if has_errors => {
-    if compact => { "compact:error" } else => { "wide:error" }
-} else => {
-    if compact => { "compact:normal" } else => { "wide:normal" }
-};
-state;
+let mode = if compact => { "compact" } else => { "wide" };
+let state = if has_errors => { "error" } else => { "normal" };
+ui_spec(mode, state);

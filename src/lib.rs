@@ -1,5 +1,5 @@
 use egui::Color32;
-use vm::{Value, Vm, VmStatus, compile_source};
+use vm::{CallOutcome, CallReturn, HostFunction, Value, Vm, VmError, VmStatus, compile_source};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum UiMode {
@@ -64,9 +64,23 @@ fn evaluate_raw(source: &str, width: i64, has_errors: bool) -> Result<String, St
     }
 }
 
+struct UiSpecHost;
+
+impl HostFunction for UiSpecHost {
+    fn call(&mut self, _vm: &mut Vm, args: &[Value]) -> Result<CallOutcome, VmError> {
+        match args {
+            [Value::String(mode), Value::String(state)] => Ok(CallOutcome::Return(
+                CallReturn::one(Value::string(format!("{mode}:{state}"))),
+            )),
+            _ => Err(VmError::TypeMismatch("ui mode and state strings")),
+        }
+    }
+}
+
 fn run_value(source: &str) -> Result<Value, String> {
     let compiled = compile_source(source).map_err(|err| err.to_string())?;
     let mut vm = Vm::new(compiled.program);
+    vm.bind_function("ui_spec", Box::new(UiSpecHost));
     let status = vm.run().map_err(|err| err.to_string())?;
     if status != VmStatus::Halted {
         return Err(format!("script did not halt: {status:?}"));
