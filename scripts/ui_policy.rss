@@ -1,6 +1,12 @@
-fn ui_spec(mode, state) -> string;
+fn egui_rgb(r, g, b) -> int;
+fn ui_spec(mode, title, accent) -> string;
 
 let compact = width < 480;
 let mode = if compact => { "compact" } else => { "wide" };
-let state = if has_errors => { "error" } else => { "normal" };
-ui_spec(mode, state);
+let title = if has_errors => { "Fix errors" } else => { "Ready" };
+let accent = if has_errors => {
+    egui_rgb(220, 40, 40)
+} else => {
+    egui_rgb(60, 160, 90)
+};
+ui_spec(mode, title, accent);

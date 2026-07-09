@@ -8,7 +8,8 @@ A desktop/UI application can keep egui rendering compiled while moving responsiv
 
 - compiled UI type: `UiSpec { mode, title, accent: egui::Color32 }`
 - scripted inputs: viewport width and error state
-- scripted behavior: compact/wide mode and normal/error state selection
+- RustScript calls `egui_rgb(r, g, b) -> int`, a host function backed by `egui::Color32::from_rgb`
+- scripted behavior: compact/wide mode, title, and accent color selection
 
 This does not fork or patch egui. It depends on upstream `egui` and local `pd-vm` path only.
 
