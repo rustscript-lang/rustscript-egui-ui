@@ -34,7 +34,7 @@ jobs:
         run: cargo clippy --all-targets
       - name: Tests
         working-directory: rustscript-egui-ui
-        run: cargo test --tests --jobs 4
+        run: cargo test --tests
       - name: Example run
         working-directory: rustscript-egui-ui
         run: cargo run --example panel
