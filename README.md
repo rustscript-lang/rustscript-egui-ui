@@ -16,7 +16,7 @@ This does not fork or patch egui. It depends on upstream `egui` and local `pd-vm
 ## Run
 
 ```bash
-cargo test --tests --jobs 4
+cargo test --tests
 cargo run --example panel
 ```
 
