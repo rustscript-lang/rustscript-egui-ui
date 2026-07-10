@@ -6,7 +6,7 @@ license = "Apache-2.0"
 
 [dependencies]
 egui = "0.35.0"
-vm = { package = "pd-vm", path = "../rustscript/pd-vm", default-features = false, features = ["runtime"] }
+vm = { package = "pd-vm", path = "../rustscript", default-features = false, features = ["runtime"] }
 
 [dev-dependencies]
 pretty_assertions = "1"

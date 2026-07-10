@@ -1,6 +1,6 @@
-# rustscript-egui-ui-policy
+# rustscript-egui-ui
 
-Standalone egui integration demo for `pd-vm` / RustScript.
+Example of using RustScript in an egui application.
 
 ## What it proves
 

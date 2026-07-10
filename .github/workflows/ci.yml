@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: rustscript-egui-ui-policy
+          path: rustscript-egui-ui
       - uses: actions/checkout@v4
         with:
           repository: rustscript-lang/rustscript
@@ -27,14 +27,14 @@ jobs:
         with:
           components: rustfmt, clippy
       - name: Format check
-        working-directory: rustscript-egui-ui-policy
+        working-directory: rustscript-egui-ui
         run: cargo fmt --all -- --check
       - name: Clippy
-        working-directory: rustscript-egui-ui-policy
+        working-directory: rustscript-egui-ui
         run: cargo clippy --all-targets
       - name: Tests
-        working-directory: rustscript-egui-ui-policy
+        working-directory: rustscript-egui-ui
         run: cargo test --tests --jobs 4
       - name: Example run
-        working-directory: rustscript-egui-ui-policy
+        working-directory: rustscript-egui-ui
         run: cargo run --example panel
