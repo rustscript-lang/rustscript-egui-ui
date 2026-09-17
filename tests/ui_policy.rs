@@ -30,18 +30,17 @@ fn rustscript_calls_egui_color_function_for_wide_normal_style() {
 fn rustscript_can_call_egui_rgb_from_inline_policy() {
     let policy = ScriptedUiPolicy::from_source(
         r#"
-fn egui_rgb(r, g, b) -> int;
-fn ui_spec(mode, title, accent) -> string;
+use egui;
 
 let compact = width < 480;
 let mode = if compact => { "compact" } else => { "wide" };
 let title = if has_errors => { "Fix errors" } else => { "Ready" };
 let accent = if has_errors => {
-    egui_rgb(220, 40, 40)
+    egui::rgb(220, 40, 40)
 } else => {
-    egui_rgb(60, 160, 90)
+    egui::rgb(60, 160, 90)
 };
-ui_spec(mode, title, accent);
+egui::ui_spec(mode, title, accent);
 "#,
     )
     .expect("policy should compile");
