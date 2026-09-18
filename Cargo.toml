@@ -6,7 +6,8 @@ license = "Apache-2.0"
 
 [dependencies]
 egui = "0.35.0"
-vm = { package = "pd-vm", path = "../rustscript", default-features = false, features = ["runtime"] }
+pd-host-function = { git = "https://github.com/rustscript-lang/rustscript", rev = "b1d6cffede77f49410bf63525f30b9a46b02dc01" }
+vm = { package = "pd-vm", git = "https://github.com/rustscript-lang/rustscript", rev = "b1d6cffede77f49410bf63525f30b9a46b02dc01", default-features = false, features = ["runtime"] }
 
 [dev-dependencies]
 pretty_assertions = "1"
