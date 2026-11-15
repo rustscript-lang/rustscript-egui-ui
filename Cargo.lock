@@ -378,8 +378,17 @@ checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
 name = "pd-host-function"
 version = "0.1.0"
 dependencies = [
+ "pd-host-schema",
  "proc-macro2",
  "quote",
+ "syn",
+]
+
+[[package]]
+name = "pd-host-schema"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
  "syn",
 ]
 
@@ -392,8 +401,10 @@ dependencies = [
  "libc",
  "paste",
  "pd-host-function",
+ "pd-host-schema",
  "regex",
  "rt-format",
+ "self_cell",
  "serde",
  "serde_json",
  "syn",
@@ -542,6 +553,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
 dependencies = [
  "serde_core",
+ "serde_derive",
 ]
 
 [[package]]
