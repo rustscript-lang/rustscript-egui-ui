@@ -11,7 +11,7 @@ use egui::Color32;
 
 use crate::to_u8;
 
-pub const FROZEN_RUSTSCRIPT_REV: &str = "b1d6cffede77f49410bf63525f30b9a46b02dc01";
+pub const FROZEN_RUSTSCRIPT_REV: &str = "fc8b0c8179640a8ffe460a64b3690e35c2f7eb73";
 
 /// Single ordered composition for the panel policy host surface.
 ///
